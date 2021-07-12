@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Марка{% endblock %}
+
+{% block body %}
+    <h1>Марка</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ brand.id }}</td>
+            </tr>
+            <tr>
+                <th>Название</th>
+                <td>{{ brand.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('brand_index') }}">Вернуться</a>
+
+    <a href="{{ path('brand_edit', {'id': brand.id}) }}">Редактировать</a>
+
+    {{ include('brand/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Марки автомобилей{% endblock %}
+
+{% block body %}
+    <h1>Марки автомобилей</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for brand in brands %}
+            <tr>
+                <td>{{ brand.name }}</td>
+                <td>
+                    <a href="{{ path('brand_show', {'id': brand.id}) }}">Показать</a>
+                    <a href="{{ path('brand_edit', {'id': brand.id}) }}">Редактировать</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Записей не найдено</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('brand_new') }}">Добавить</a>
+{% endblock %}

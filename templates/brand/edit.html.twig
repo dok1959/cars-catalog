@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Редактировать марку{% endblock %}
+
+{% block body %}
+    <h1>Редактировать марку</h1>
+
+    {{ include('brand/_form.html.twig', {'button_label': 'Обновить'}) }}
+
+    <a href="{{ path('brand_index') }}">Вернуться</a>
+
+    {{ include('brand/_delete_form.html.twig') }}
+{% endblock %}

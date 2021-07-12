@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Модели автомобилей{% endblock %}
+
+{% block body %}
+    <h1>Модели автомобилей</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Положение руля</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for model in models %}
+            <tr>
+                <td>{{ model.name }}</td>
+                <td>{{ model.steeringPosition }}</td>
+                <td>
+                    <a href="{{ path('model_show', {'id': model.id}) }}">Показать</a>
+                    <a href="{{ path('model_edit', {'id': model.id}) }}">Редактировать</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Записей не найдено</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('model_new') }}">Добавить</a>
+{% endblock %}

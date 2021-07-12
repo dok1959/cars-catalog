@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Добавить модель{% endblock %}
+
+{% block body %}
+    <h1>Добавить новую модель</h1>
+
+    {{ include('model/_form.html.twig') }}
+
+    <a href="{{ path('model_index') }}">Вернуться</a>
+{% endblock %}

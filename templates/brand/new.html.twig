@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Добавить марку{% endblock %}
+
+{% block body %}
+    <h1>Добавить новую марку</h1>
+
+    {{ include('brand/_form.html.twig') }}
+
+    <a href="{{ path('brand_index') }}">Вернуться</a>
+{% endblock %}

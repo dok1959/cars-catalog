@@ -1,0 +1,14 @@
+{{ form_start(form) }}
+<div class="my-custom-class-for-errors">
+    {{ form_errors(form) }}
+</div>
+<div class="row">
+    <div class="col">
+        {{ form_row(form.name, {'label': 'Название'}) }}
+    </div>
+    <div class="col">
+        {{ form_row(form.steeringPosition, {'label': 'Положение руля'}) }}
+    </div>
+</div>
+    <button class="btn">{{ button_label|default('Сохранить') }}</button>
+{{ form_end(form) }}
