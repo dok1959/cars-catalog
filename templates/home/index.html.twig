@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Домашняя страница!{% endblock %}
+
+{% block body %}
+    <h1>Домашняя страница</h1>
+    <div>
+        <table>
+            <tr class="tab">
+                <td>
+                    <a href="{{ path('car_index') }}">Список автомобилей</a>
+                </td>
+            </tr>
+            <tr class="tab">
+                <td>
+                    <a href="{{ path('brand_index') }}">Список марок автомобилей</a>
+                </td>
+            </tr>
+            <tr class="tab">
+                <td>
+                    <a href="{{ path('model_index') }}">Список моделей автомобилей</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}
