@@ -2,13 +2,12 @@
     <div class="my-custom-class-for-errors">
         {{ form_errors(form) }}
     </div>
+
     <div class="row">
         <div class="col">
             {{ form_row(form.brand, {'label': 'Марка'}) }}
-        </div>
-        <div class="col">
             {{ form_row(form.model, {'label': 'Модель'}) }}
         </div>
     </div>
-    <button class="btn">{{ button_label|default('Сохранить') }}</button>
+    <button class="btn btn-primary">{{ button_label|default('Сохранить') }}</button>
 {{ form_end(form) }}

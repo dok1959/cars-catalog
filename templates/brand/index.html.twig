@@ -3,23 +3,23 @@
 {% block title %}Марки автомобилей{% endblock %}
 
 {% block body %}
-    <h1>Марки автомобилей</h1>
+    <h2>Марки автомобилей</h2>
 
-    <table class="table">
-        <thead>
+    <table class="table table-striped">
+        <thead class="thead-light">
             <tr>
-                <th>Название</th>
+                <th scope="col">Название</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
         {% for brand in brands %}
             <tr>
-                <td>{{ brand.name }}</td>
+                <td data-label="Название">{{ brand.name }}</td>
                 <td>
-                    <a href="{{ path('brand_show', {'id': brand.id}) }}">Показать</a>
+                    <a class="btn btn-primary" href="{{ path('brand_show', {'id': brand.id}) }}">Показать</a>
                     {% if is_granted('ROLE_MANAGER') or is_granted('ROLE_ADMIN') %}
-                        <a href="{{ path('brand_edit', {'id': brand.id}) }}">Редактировать</a>
+                        <a class="btn btn-primary" href="{{ path('brand_edit', {'id': brand.id}) }}">Редактировать</a>
                     {% endif %}
                 </td>
             </tr>
@@ -32,6 +32,8 @@
     </table>
 
     {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('brand_new') }}">Добавить</a>
+        <div class="text-center">
+            <a class="btn btn-primary" href="{{ path('brand_new') }}">Добавить</a>
+        </div>
     {% endif %}
 {% endblock %}

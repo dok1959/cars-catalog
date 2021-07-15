@@ -3,23 +3,23 @@
 {% block title %}Список пользователей{% endblock %}
 
 {% block body %}
-    <h1>Список пользователей</h1>
+    <h2>Список пользователей</h2>
 
-    <table class="table">
-        <thead>
+    <table class="table table-striped">
+        <thead class="thead-light">
             <tr>
-                <th>Id</th>
-                <th>Почта</th>
-                <th>Роли</th>
-                <th></th>
+                <th scope="col">Id</th>
+                <th scope="col">Почта</th>
+                <th scope="col">Роли</th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
         {% for user in users %}
             <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.email }}</td>
-                <td>
+                <td data-label="Id">{{ user.id }}</td>
+                <td data-label="Почта">{{ user.email }}</td>
+                <td data-label="Роли">
                     <select>
                         {% for role in user.roles %}
                         <option>
@@ -29,7 +29,7 @@
                     </select>
                 </td>
                 <td>
-                    <a href="{{ path('admin_edit', {'id': user.id}) }}">Редактировать</a>
+                    <a class="btn btn-primary" href="{{ path('admin_edit', {'id': user.id}) }}">Редактировать</a>
                 </td>
             </tr>
         {% else %}

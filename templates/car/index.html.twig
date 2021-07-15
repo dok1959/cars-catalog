@@ -3,27 +3,26 @@
 {% block title %}Автомобили{% endblock %}
 
 {% block body %}
-    <h1>Список автомобилей</h1>
-
-    <table class="table">
-        <thead>
+    <h2>Список автомобилей</h2>
+    <table class="table table-striped">
+        <thead class="thead-light">
             <tr>
-                <th>Марка</th>
-                <th>Модель</th>
-                <th>Положение руля</th>
-                <th></th>
+                <th scope="col">Марка</th>
+                <th scope="col">Модель</th>
+                <th scope="col">Положение руля</th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
         {% for car in cars %}
             <tr>
-                <td>{{ car.getBrand().getName() }}</td>
-                <td>{{ car.getModel().getName() }}</td>
-                <td>{{ car.getModel().getSteeringPosition() }}</td>
+                <td data-label="Марка">{{ car.getBrand().getName() }}</td>
+                <td data-label="Модель">{{ car.getModel().getName() }}</td>
+                <td data-label="Положение руля">{{ car.getModel().getSteeringPosition() }}</td>
                 <td>
-                    <a href="{{ path('car_show', {'id': car.id}) }}">Показать</a>
+                    <a class="btn btn-primary" href="{{ path('car_show', {'id': car.id}) }}">Показать</a>
                     {% if is_granted('ROLE_MANAGER') or is_granted('ROLE_ADMIN') %}
-                        <a href="{{ path('car_edit', {'id': car.id}) }}">Редактировать</a>
+                        <a class="btn btn-primary" href="{{ path('car_edit', {'id': car.id}) }}">Редактировать</a>
                     {% endif %}
                 </td>
             </tr>
@@ -36,6 +35,8 @@
     </table>
 
     {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('car_new') }}">Добавить</a>
+            <div class="text-center">
+                <a class="btn btn-primary" href="{{ path('car_new') }}">Добавить</a>
+            </div>
     {% endif %}
 {% endblock %}

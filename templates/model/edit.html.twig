@@ -3,13 +3,16 @@
 {% block title %}Редактировать модель{% endblock %}
 
 {% block body %}
-    <h1>Редактировать модель</h1>
+    <h2>Редактировать модель</h2>
+    <div class="container">
+        <div class="text-center">
+            {{ include('model/_form.html.twig', {'button_label': 'Обновить'}) }}
 
-    {{ include('model/_form.html.twig', {'button_label': 'Обновить'}) }}
+            <a class="btn btn-primary" href="{{ path('model_index') }}">Вернуться</a>
 
-    <a href="{{ path('model_index') }}">Вернуться</a>
-
-    {% if is_granted('ROLE_ADMIN') %}
-        {{ include('model/_delete_form.html.twig') }}
-    {% endif %}
+            {% if is_granted('ROLE_ADMIN') %}
+                {{ include('model/_delete_form.html.twig') }}
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}

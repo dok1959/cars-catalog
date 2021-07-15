@@ -3,9 +3,11 @@
 {% block title %}Добавить автомобиль{% endblock %}
 
 {% block body %}
-    <h1>Добавить новый автомобиль</h1>
-
-    {{ include('car/_form.html.twig') }}
-
-    <a href="{{ path('car_index') }}">Вернуться</a>
+    <h2>Добавить новый автомобиль</h2>
+    <div class="container">
+        <div class="text-center">
+            {{ include('car/_form.html.twig') }}
+            <a class="btn btn-primary" href="{{ path('car_index') }}">Вернуться</a>
+        </div>
+    </div>
 {% endblock %}

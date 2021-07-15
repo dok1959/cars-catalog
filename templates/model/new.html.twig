@@ -3,9 +3,11 @@
 {% block title %}Добавить модель{% endblock %}
 
 {% block body %}
-    <h1>Добавить новую модель</h1>
-
-    {{ include('model/_form.html.twig') }}
-
-    <a href="{{ path('model_index') }}">Вернуться</a>
+    <h2>Добавить новую модель</h2>
+    <div class="container">
+        <div class="text-center">
+            {{ include('model/_form.html.twig') }}
+            <a class="btn btn-primary" href="{{ path('model_index') }}">Вернуться</a>
+        </div>
+    </div>
 {% endblock %}

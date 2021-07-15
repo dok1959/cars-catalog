@@ -3,11 +3,12 @@
 {% block title %}Редактировать роли{% endblock %}
 
 {% block body %}
-    <h1>Редактировать роли пользователя</h1>
-
-    {{ include('admin/_form.html.twig', {'button_label': 'Обновить'}) }}
-
-    <a href="{{ path('admin_index') }}">Вернуться</a>
-
-    {{ include('admin/_delete_form.html.twig') }}
+    <h2>Редактировать роли пользователя</h2>
+    <div class="container">
+        <div class="text-center">
+            {{ include('admin/_form.html.twig', {'button_label': 'Обновить'}) }}
+            <a class="btn btn-primary" href="{{ path('admin_index') }}">Вернуться</a>
+            {{ include('admin/_delete_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}

@@ -3,32 +3,36 @@
 {% block title %}Модель{% endblock %}
 
 {% block body %}
-    <h1>Модель</h1>
+    <h2>Модель</h2>
 
-    <table class="table">
+    <table class="table table-striped">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Название</th>
+                <th scope="col">Положение руля</th>
+            </tr>
+        </thead>
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ model.id }}</td>
-            </tr>
-            <tr>
-                <th>Название</th>
-                <td>{{ model.name }}</td>
-            </tr>
-            <tr>
-                <th>Положение руля</th>
-                <td>{{ model.steeringPosition }}</td>
+                <td data-label="Id">{{ model.id }}</td>
+                <td data-label="Название">{{ model.name }}</td>
+                <td data-label="Положение руля">{{ model.steeringPosition }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('model_index') }}">Вернуться</a>
+    <div class="container">
+        <div class="text-center">
+            <a class="btn btn-primary" href="{{ path('model_index') }}">Вернуться</a>
 
-    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_MANAGER') %}
-        <a href="{{ path('model_edit', {'id': model.id}) }}">Редактировать</a>
-    {% endif %}
+            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_MANAGER') %}
+                <a class="btn btn-primary" href="{{ path('model_edit', {'id': model.id}) }}">Редактировать</a>
+            {% endif %}
 
-    {% if is_granted('ROLE_ADMIN') %}
-        {{ include('model/_delete_form.html.twig') }}
-    {% endif %}
+            {% if is_granted('ROLE_ADMIN') %}
+                {{ include('model/_delete_form.html.twig') }}
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}
