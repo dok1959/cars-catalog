@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Список пользователей{% endblock %}
+
+{% block body %}
+    <h1>Список пользователей</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Почта</th>
+                <th>Роли</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    <select>
+                        {% for role in user.roles %}
+                        <option>
+                            {{ role }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <a href="{{ path('admin_edit', {'id': user.id}) }}">Редактировать</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Записей не найдено</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

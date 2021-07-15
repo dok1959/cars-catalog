@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Редактировать роли{% endblock %}
+
+{% block body %}
+    <h1>Редактировать роли пользователя</h1>
+
+    {{ include('admin/_form.html.twig', {'button_label': 'Обновить'}) }}
+
+    <a href="{{ path('admin_index') }}">Вернуться</a>
+
+    {{ include('admin/_delete_form.html.twig') }}
+{% endblock %}
