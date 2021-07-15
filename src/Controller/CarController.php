@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * @Route("/car")
@@ -17,6 +19,7 @@ class CarController extends AbstractController
 {
     /**
      * @Route("/", name="car_index", methods={"GET"})
+     * @IsGranted("ROLE_USER")
      */
     public function index(CarRepository $carRepository): Response
     {
@@ -27,6 +30,7 @@ class CarController extends AbstractController
 
     /**
      * @Route("/new", name="car_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function new(Request $request): Response
     {
@@ -50,6 +54,7 @@ class CarController extends AbstractController
 
     /**
      * @Route("/{id}", name="car_show", methods={"GET"})
+     * @IsGranted("ROLE_USER")
      */
     public function show(Car $car): Response
     {
@@ -60,6 +65,7 @@ class CarController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="car_edit", methods={"GET","POST"})
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_MANAGER')")
      */
     public function edit(Request $request, Car $car): Response
     {
@@ -80,6 +86,7 @@ class CarController extends AbstractController
 
     /**
      * @Route("/{id}", name="car_delete", methods={"POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Car $car): Response
     {

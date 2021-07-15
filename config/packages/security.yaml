@@ -36,5 +36,17 @@ security:
     access_control:
          - { path: ^/register$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
          - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-         - { path: ^/*, roles: ROLE_USER }
-         - { path: ^/admin, roles: ROLE_ADMIN }
+         #- { path: ^/admin, roles: ROLE_ADMIN }
+
+         #- { path: ^/car/new, roles: [ ROLE_ADMIN ] }
+         #- { path: ^/model/new, roles: [ ROLE_ADMIN ] }
+         #- { path: ^/brand/new, roles: [ ROLE_ADMIN ] }
+
+         #- { path: ^/car/[0-9]+/edit, roles: [ ROLE_MANAGER, ROLE_ADMIN ] }
+         #- { path: ^/model/[0-9]+/edit, roles: [ ROLE_MANAGER, ROLE_ADMIN ] }
+         #- { path: ^/brand/[0-9]+/edit, roles: [ ROLE_MANAGER, ROLE_ADMIN ] }
+
+         #- { path: ^/car/*, roles: ROLE_USER }
+         #- { path: ^/model/*, roles: ROLE_USER }
+         #- { path: ^/brand/*, roles: ROLE_USER }
+

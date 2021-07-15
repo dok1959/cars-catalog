@@ -20,7 +20,12 @@
 
     <a href="{{ path('brand_index') }}">Вернуться</a>
 
-    <a href="{{ path('brand_edit', {'id': brand.id}) }}">Редактировать</a>
+    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_MANAGER') %}
+        <a href="{{ path('brand_edit', {'id': brand.id}) }}">Редактировать</a>
+    {% endif %}
 
-    {{ include('brand/_delete_form.html.twig') }}
+    {% if is_granted('ROLE_ADMIN') %}
+        {{ include('brand/_delete_form.html.twig') }}
+    {% endif %}
+
 {% endblock %}

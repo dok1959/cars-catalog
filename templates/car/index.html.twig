@@ -22,7 +22,9 @@
                 <td>{{ car.getModel().getSteeringPosition() }}</td>
                 <td>
                     <a href="{{ path('car_show', {'id': car.id}) }}">Показать</a>
-                    <a href="{{ path('car_edit', {'id': car.id}) }}">Редактировать</a>
+                    {% if is_granted('ROLE_MANAGER') or is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('car_edit', {'id': car.id}) }}">Редактировать</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -33,5 +35,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('car_new') }}">Добавить</a>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('car_new') }}">Добавить</a>
+    {% endif %}
 {% endblock %}

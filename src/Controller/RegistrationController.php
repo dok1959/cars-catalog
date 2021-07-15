@@ -39,12 +39,14 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            $user->setRoles(array('ROLE_USER'));
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
 
-            return new RedirectResponse($this->urlGenerator->generate('home'));
+            return new RedirectResponse("/");
         }
 
         return $this->render('registration/register.html.twig', [
