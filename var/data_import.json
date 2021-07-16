@@ -1,0 +1,64 @@
+{
+    "models" : [
+        {
+            "name" : "Corolla",
+            "steeringPosition" : "Правый руль"
+        },
+        {
+            "name" : "Prius",
+            "steeringPosition" : "Правый руль"
+        },
+        {
+            "name" : "Juke",
+            "steeringPosition" : "Левый руль"
+        }
+    ],
+    "brands" : [
+        {
+            "name" : "Toyota"
+        },
+        {
+            "name" : "Nissan"
+        }
+    ],
+    "cars" : [
+        {
+            "brand" : 1,
+            "model" : 1
+        },
+        {
+            "brand" : 1,
+            "model" : 2
+        },
+        {
+            "brand" : 2,
+            "model" : 3
+        }
+    ],
+    "users" : [
+        {
+            "email" : "user@m.ru",
+            "password" : "123456",
+            "roles" : [
+                "ROLE_USER"
+            ]
+        },
+        {
+            "email" : "manager@m.ru",
+            "password" : "123456",
+            "roles" : [
+                "ROLE_USER",
+                "ROLE_MANAGER"
+            ]
+        },
+        {
+            "email" : "admin@m.ru",
+            "password" : "123456",
+            "roles" : [
+                "ROLE_USER",
+                "ROLE_MANAGER",
+                "ROLE_ADMIN"
+            ]
+        }
+    ]
+}

@@ -21,6 +21,7 @@ final class Version20210712093718 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE brand (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name VARCHAR(255) NOT NULL)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_1C52F9585E237E06 ON brand (name)');
         $this->addSql('CREATE TABLE car (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, brand_id INTEGER NOT NULL, model_id INTEGER NOT NULL)');
         $this->addSql('CREATE INDEX IDX_773DE69D44F5D008 ON car (brand_id)');
         $this->addSql('CREATE INDEX IDX_773DE69D7975B7E7 ON car (model_id)');

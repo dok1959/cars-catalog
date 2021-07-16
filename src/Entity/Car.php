@@ -19,13 +19,13 @@ class Car
 
     /**
      * @ORM\ManyToOne(targetEntity=Brand::class)
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $brand;
 
     /**
      * @ORM\ManyToOne(targetEntity=Model::class)
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $model;
 

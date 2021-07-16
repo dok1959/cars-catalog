@@ -32,7 +32,7 @@ class BrandController extends AbstractController
      * @Route("/new", name="brand_new", methods={"GET","POST"})
      * @IsGranted("ROLE_ADMIN")
      */
-    public function new(Request $request): Response
+    public function new(Request $request, BrandRepository $brandRepository): Response
     {
         $brand = new Brand();
         $form = $this->createForm(BrandType::class, $brand);
@@ -40,9 +40,11 @@ class BrandController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($brand);
-            $entityManager->flush();
-
+            if($brandRepository->findOneBy(['name' => $brand->getName()]) == [])
+            {
+                $entityManager->persist($brand);
+                $entityManager->flush();
+            }
             return $this->redirectToRoute('brand_index', [], Response::HTTP_SEE_OTHER);
         }
 
