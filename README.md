@@ -1,6 +1,11 @@
 # cars-catalog
  Cars catalog
 
+Внимание!!! Для корректного запуска необходимо выполнить следующие команды:
+- composer install
+- php bin/console doctrine:database:create
+- php bin/console doctrine:migrations:migrate
+
 Маршруты:
 - "/" - Домашняя страница
 - "/car" - Каталог автомобилей
