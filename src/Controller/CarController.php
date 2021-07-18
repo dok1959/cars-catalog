@@ -6,6 +6,7 @@ use App\Entity\Car;
 use App\Form\CarType;
 use App\Repository\CarRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -38,12 +39,24 @@ class CarController extends AbstractController
         $form = $this->createForm(CarType::class, $car);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($car);
-            $entityManager->flush();
+        if($form->isSubmitted())
+        {
+            if(!$car->getModel()) {
+                $form->get('model')->addError(new FormError('Модель не должна быть пустой'));
+            }
 
-            return $this->redirectToRoute('car_index', [], Response::HTTP_SEE_OTHER);
+            if(!$car->getBrand()) {
+                $form->get('brand')->addError(new FormError('Брэнд не должен быть пустым'));
+            }
+
+            if($form->isValid())
+            {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($car);
+                $entityManager->flush();
+
+                return $this->redirectToRoute('car_index', [], Response::HTTP_SEE_OTHER);
+            }
         }
 
         return $this->renderForm('car/new.html.twig', [
