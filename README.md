@@ -1,5 +1,4 @@
-# cars-catalog
- PHP Symfony cars catalog
+# PHP Symfony cars catalog
 
 Внимание!!! Для корректного запуска необходимо выполнить следующие команды:
 - composer install
